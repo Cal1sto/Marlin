@@ -1,3 +1,67 @@
+//===========================================================================
+//================================== Intro ==================================
+//===========================================================================
+/**
+* ****************** Molise 1.3 Firmware for Artillery Genius 3D Printer and Sidewinder X1 based on Marlin Bugfix 2.0.x************** **********
+*
+* Molise 1.3 firmware is brought to you by David TOUTON, the awesome 3D printing community, and of course we can't forget the Marlin team who spent countless days, nights and years building Marlin how far it is today.
+*
+* Simple and advanced configuration assistant in 7 sections for "stock" or upgraded printer with:
+* - TMC 2208 or 2209 drivers and LV8729
+* - SKR 1.3, 1.4 and 1.4 Turbo motherboard
+* - Extruder BMG, Hemera and Matrix
+* Taking in exchange for:
+* - BlTouch with or without Waggster Mod
+* - TouchMi with or without LED on X1
+* - 3DPRINTBEGINNER Z MIN SENSOR AS ABL BED MESH PROBE MOD
+* - GraphicalLCD
+* - Sensorless Homing
+* - HYBRID_THRESHOLD
+* - MBL
+* - M600
+* - Z_STEPPER_AUTO_ALIGN
+* - Solution to Octoprint communication problem
+* - If you connect your filament runout sensor to the motherboard instead of the TFT
+* - Etc ...
+*
+* You just have to uncomment your configuration for the 7 sections in Configuration.h at the beginning in “Molise Options” and to compile with VS code only.
+* You choose or set something by removing // in front of the code.
+* You can ignore a code by keeping // in front of the code
+* Remember to put your "default_envs" in the platformio.ini file (explanations Section 2) so that VS Code compiles well according to your motherboard.
+*
+* Molise 1.3 firmware is provided to you free of charge, in an "as is" state. We cannot be held responsible for any damage it may do to your 3D printer if it occurs. Please proceed with caution.
+*
+* ------------------------------------------------- -------------------------------------------
+* 
+* ******************Firmware Molise 1.3 pour Imprimante 3D Artillery Genius et Sidewinder X1 basé sur Marlin Bugfix 2.0.x************************
+*
+* Le firmware Molise 1.3 vous est fourni par David TOUTON, la géniale communauté d’impression 3D, et bien sûr, nous ne pouvons pas oublier l’équipe Marlin qui a passé d’innombrables jours, nuits et années à construire Marlin jusqu’où il est aujourd’hui.
+*
+* Assisant de configuration simple et avancé en 7 sections pour imprimante « stock » ou upgradé avec :
+* -	Drivers TMC 2208 ou 2209 and LV8729
+* -	Carte mère SKR 1.3, 1.4 et 1.4 Turbo
+* -	Extruder BMG, Hemera et Matrix
+* Prise en change de :
+* -	BlTouch avec ou sans Waggster Mod
+* - TouchMi avec ou sans LED sur X1
+* -	3DPRINTBEGINNER Z MIN SENSOR AS ABL BED MESH PROBE MOD
+* -	GraphicalLCD
+* -	Sensorless Homing
+* -	HYBRID_THRESHOLD
+* - MBL
+* - M600
+* - Z_STEPPER_AUTO_ALIGN
+* - Solution au problème de communication d'Octoprint
+* -	Etc…
+*
+* Il vous suffit de décommenter votre configuration pour les 7 sections dans Configuration.h au début dans « Molise Options » et de compiler avec VS code uniquement.
+* Vous choisissez ou définissez quelque chose en supprimant // devant le code.
+* Vous pouvez ignorer un code en gardant // devant le code
+* Pensez bien à mettre votre « default_envs » dans le fichier platformio.ini (explications Section 2) pour que VS Code compile bien en fonction de votre carte mère.
+*
+* Le firmware Molise 1.3 vous est fourni gratuitement, dans un état « tel quel ». Nous ne pouvons pas être tenus responsables des dommages qu’il pourrait fait à votre imprimante 3D le cas échéant. S’il vous plaît procéder avec prudence.
+*/
+
 /**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
@@ -19,6 +83,100 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
+
+
+//===========================================================================
+//============================= Molise Options ============================== 
+//=========================================================================== 
+
+/*** Section 1 Artillery Printer ***/
+
+//#define GENIUS
+#define X1
+
+/*** Section 2 Board Type ***/
+
+#define MKSGENL         // Stock Board
+//#define MKSGENLV21      // Choose this if you are using MKS GEN L V2.1
+//#define SKR13           // Choose this if you are using BigTreeTech SKR 1.3
+//#define SKR14           // Choose this if you are using BigTreeTech SKR 1.4
+//#define SKR14T          // Choose this if you are using BigTreeTech SKR 1.4 Turbo
+//#define MKSSGENLV1      // Choose this if you are using MKS SGEN L V1
+//#define MKSSGENLV2      // Choose this if you are using MKS SGEN L V2
+
+
+/*default_envs in Platformio.ini :
+-Board name: MKS GEN L, change_value = mega2560 //use this value in platform.ini. Search for 'change_value' and replace it with this value mega2560
+-Board name: MKS GEN L V2.1, change_value = mega2560 //use this value in platform.ini. Search for 'change_value' and replace it with this value mega2560
+-Board name: SKR13, change_value = LPC1768 //use this value in platform.ini. Search for 'change_value' and replace it with this value LPC1768
+-Board name: SKR14, change_value = LPC1768 //use this value in platform.ini. Search for 'change_value' and replace it with this value LPC1768
+-Board name: SKRV14TURBO, change_value = LPC1769 //use this value in platform.ini. Search for 'change_value' and replace it with this value LPC1769
+-Board name: MKSSGENLV1, change_value = LPC1768 //use this value in platform.ini. Search for 'change_value' and replace it with this value LPC1768
+-Board name: MKSSGENLV2, change_value = LPC1769 //use this value in platform.ini. Search for 'change_value' and replace it with this value LPC1769
+*/
+
+/*** Section 3 Extruder Type ***/
+
+#define TITAN       // Stock Extruder
+//#define BMG         // Choose this if you are using BMG/BMG Wind
+//#define HEMERA      // Choose this if you are using HEMERA
+//#define MATRIX      // Choose this if you are using MATRIX
+
+/*** Section 4 Drivers Type ***/
+
+#define TMC_2100        // Stock Drivers
+//#define TMC_2208_STA    // Standalone Mode
+//#define TMC_2209_STA    // Standalone Mode
+//#define LV_8729
+//#define TMC_2208        // UART Mode
+//#define TMC_2209        // UART Mode
+
+/*** Section 5 Bed Leveling ***/
+
+//#define BLTOUCH      //uncomment if you use a BLTouch
+  #ifdef BLTOUCH
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define NOZZLE_TO_PROBE_OFFSET { 28, -33, 0 }   //Offset preset for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
+  //#define NOZZLE_TO_PROBE_OFFSET { -17, -42, 0 }  //Offset preset for this fanduct with 5015 Fan on Thingiverse : https://www.thingiverse.com/thing:4741530
+  //#define NOZZLE_TO_PROBE_OFFSET { 56, -34, 0 }   //Offset preset for this fanduct with 5015 Fan on Thingiverse : https://www.thingiverse.com/thing:4548854
+  //#define NOZZLE_TO_PROBE_OFFSET { 36, -38, 0 }   //Offset preset for BMG Wind for this fanduct : Sidewinder X1 Waggster Mod BLTouch with improved Fan Duct  by 3dprintbeginnercom on Thingiverse: https://www.thingiverse.com/thing:3972011
+    #define WAGGSTER_MOD_WIRING                     //Comment if you don't use Waggster mode on Sidewinder (Guero Loco method by exemple) Mod needed for Genius standard wiring
+  //#define Z_STEPPER_AUTO_ALIGN                    //Uncomment if you want to use Z_STEPPER_AUTO_ALIGN, be carefull, you need to remove the belt from the Z axes for this
+  //#define DISABLE_LED                             // Uncomment to disable LED, some users report compatibilty issues with BL Touch and LED enabled
+  #endif
+
+//#define ZMIN_SENSOR_AS_PROBE                      //uncomment to use Z min as Probe for bed leveling (incompatible with BLTouch)
+  #ifdef ZMIN_SENSOR_AS_PROBE
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define NOZZLE_TO_PROBE_OFFSET { 0, 0, 0 }   
+  #endif
+
+#define TOUCH_MI_PROBE                            //uncomment if you use a Touch Mi
+  #ifdef TOUCH_MI_PROBE
+    #define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+    #define NOZZLE_TO_PROBE_OFFSET { -43, -32, 0 }  //Offset preset for this fanduct : https://www.thingiverse.com/thing:4713319
+    #define TOUCH_MI_RETRACT_Z 0.5                  // Height at which the probe retracts
+    //#define TOUCH_MI_DEPLOY_XPOS (X_MAX_BED + 2)  // For a magnet on the right side of the bed
+    //#define TOUCH_MI_MANUAL_DEPLOY                // For manual deploy (LCD menu)
+    #define Z_STEPPER_AUTO_ALIGN                    //Uncomment if you want to use Z_STEPPER_AUTO_ALIGN, be carefull, you need to remove the belt from the Z axes for this
+    //#define TOUCH_MI_LED                          // Uncomment if you have the additional LED from Hotends.fr for the X1
+    #define TOUCH_MI_NEOPIXEL                      // Uncomment if you have the additional Neopixel LED from Hotends.fr
+#endif
+
+//#define MESH_BED_LEVELING                         //uncomment if you want to use Mesh Bed Leveling
+
+/*** Section 6 Options ***/
+
+//#define GraphicalLCD                              // Will work next to MKS TFT
+#define MKSGENL_TFT                                 // To be activated if you have deported the TFT connection to EXP1 on the MKS Gen L ==> communication speed : 250000
+#define FILAMENT_RUNOUT_SENSOR                    // If you connect your filament runout sensor to the motherboard instead of the TFT
+//#define NEOPIXEL_PERSO                            // If you want to use a personal Neopixel LED on the Neopixel Port
+//#define LED_PORT_NEOPIXEL                         // If you want to use a personal Neopixel LED on the original LED Port
+
+/*** Section 7 Sensorless Homing XY ***/
+
+//#define SENSHOME // Active sensorless homing ONLY for TMC 2208 UART and 2009 UART with SKR 1.3 (extra wiring needed) and SKR 1.4 (no extra wiring needed)
+
 #pragma once
 
 /**
@@ -971,6 +1129,10 @@
 //#define TOUCH_MI_PROBE
 #if ENABLED(TOUCH_MI_PROBE)
   #define TOUCH_MI_RETRACT_Z 0.5                  // Height at which the probe retracts
+  #define Z_SAFE_HOMING
+  #define BABYSTEPPING
+  #define BABYSTEP_ZPROBE_OFFSET
+  #define Z_HOMING_HEIGHT 10
   //#define TOUCH_MI_DEPLOY_XPOS (X_MAX_BED + 2)  // For a magnet on the right side of the bed
   //#define TOUCH_MI_MANUAL_DEPLOY                // For manual deploy (LCD menu)
 #endif
@@ -1048,7 +1210,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+//#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1128,7 +1290,7 @@
 #define Z_PROBE_OFFSET_RANGE_MAX 20
 
 // Enable the M48 repeatability test to test probe accuracy
-//#define Z_MIN_PROBE_REPEATABILITY_TEST
+#define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // Before deploy/stow pause for user confirmation
 //#define PAUSE_BEFORE_DEPLOY_STOW
@@ -1225,16 +1387,16 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 200
-#define Y_BED_SIZE 200
+#define X_BED_SIZE 300
+#define Y_BED_SIZE 300
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -2
+#define Y_MIN_POS -5
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 200
+#define Z_MAX_POS 400
 
 /**
  * Software Endstops
@@ -1690,13 +1852,13 @@
 // Preheat Constants - Up to 5 are supported without changes
 //
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 180
-#define PREHEAT_1_TEMP_BED     70
+#define PREHEAT_1_TEMP_HOTEND 195
+#define PREHEAT_1_TEMP_BED     65
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
+#define PREHEAT_2_TEMP_HOTEND 230
 #define PREHEAT_2_TEMP_BED    110
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
@@ -1712,7 +1874,7 @@
  *    P1  Raise the nozzle always to Z-park height.
  *    P2  Raise the nozzle by Z-park amount, limited to Z_MAX_POS.
  */
-//#define NOZZLE_PARK_FEATURE
+#define NOZZLE_PARK_FEATURE
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
